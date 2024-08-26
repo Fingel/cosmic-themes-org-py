@@ -52,10 +52,19 @@
 
 .theme-preview-menu {
     height: 25px;
-    flex: none;
-    text-align: right;
+    display: flex;
+    color: var(--button-on);
+    font-size: 0.7em;
+    font-weight: bold;
 }
 
+.theme-preview-menu .menu-right {
+    flex-grow: 1;
+    text-align: right;
+}
+.theme-preview-menu .menu-right > * {
+    padding: 0 6px;
+}
 .theme-preview-main {
     flex-grow: 1;
     display: flex;
@@ -79,14 +88,6 @@
     border-width: var(--active-hint);
     border-style: solid;
     color: var(--on-bg-color);
-}
-.theme-preview-menu {
-    color: var(--button-on);
-    font-size: 0.7em;
-    font-weight: bold;
-}
-.theme-preview-menu > * {
-    padding: 0 6px;
 }
 
 .theme-preview-sidebar {

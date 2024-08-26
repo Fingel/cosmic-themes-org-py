@@ -7,8 +7,13 @@
 }
 </style>
 <div id="theme-preview-{{ theme.id }}" class="my-5">
-    <div class="theme-preview pb-2" x-data="{color: false }">
-        <div class="theme-preview-menu"><span>_</span> <i class="bi bi-arrows-angle-expand" style="font-size: 1em;"></i>&nbsp;<i class="bi bi-x-lg"></i></div>
+    <div id="{{theme.name}}" class="theme-preview pb-2" x-data="{color: false }">
+        <div class="theme-preview-menu">
+            <div class="menu-left"><a href="#{{ theme.name }}"><i class="bi bi-link-45deg"></i></a></div>
+            <div class="menu-right">
+                <span>_</span> <i class="bi bi-arrows-angle-expand" style="font-size: 1em;"></i>&nbsp;<i class="bi bi-x-lg"></i>
+            </div>
+        </div>
         <div class="theme-preview-main">
             <div class="theme-preview-sidebar">
                 <ul>
