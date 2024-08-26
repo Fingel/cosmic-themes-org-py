@@ -162,7 +162,7 @@
 }
 
 .theme-preview .toggle-switch {
-    background-color: var(--button-pressed);
+    background-color: var(--primary-component-color);
     border-radius: var(--corner-radius);
     height: 18px;
     width: 16px;
