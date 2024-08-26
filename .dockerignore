@@ -1,0 +1,6 @@
+local_settings.py
+.direnv
+__pycache__
+pyrightconfig.json
+.git
+db.sqlite3

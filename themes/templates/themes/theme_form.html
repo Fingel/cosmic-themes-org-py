@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<p>To export your theme, go the Cosmic settings -> Desktop -> Appearance and click
+the "export" button. You can then upload the provided .ron file here.</p>
+<p>All submissions will be reviewed for spam.</p>
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form|crispy}}
+<button class="btn btn-primary" type="submit">Upload</button>
+</form>
+{% endblock %}

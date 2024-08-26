@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for theme in object_list %}
+<style>
+#theme-preview-{{ theme.id }} {
+    {{ theme.css }}
+}
+</style>
+<div id="theme-preview-{{ theme.id }}" class="my-5">
+    <div class="theme-preview pb-2" x-data="{color: false }">
+        <div class="theme-preview-menu"><span>_</span> <i class="bi bi-arrows-angle-expand" style="font-size: 1em;"></i>&nbsp;<i class="bi bi-x-lg"></i></div>
+        <div class="theme-preview-main">
+            <div class="theme-preview-sidebar">
+                <ul>
+                    <li x-bind:class="color ? '' : 'active'" x-on:click="color = false">
+                        <i class="bi bi-code-slash mx-1"></i>Theme
+                    </li>
+                    <li x-bind:class="color ? 'active': ''" x-on:click="color = true">
+                        <i class="bi bi-palette mx-1"></i> Colors
+                    </li>
+                </ul>
+            </div>
+            <div class="theme-preview-content">
+                <h3>{{ theme.name }}</h3></p>
+                <div class="theme-preview-center mb-3" x-show="!color">
+                    <div class="container">
+                        {% if theme.author %}
+                        <div class="row p-2">
+                            <div class="col">Author</div>
+                            <div class="col text-end">{{ theme.author }}</div>
+                        </div>
+                        {% endif %}
+                        {% if theme.link %}
+                        <div class="row p-2">
+                            <div class="col">Homepage</div>
+                            <div class="col text-end"><a href="{{ theme.link }}">Visit</a></div>
+                        </div>
+                        {% endif %}
+                        <div class="row p-2">
+                            <div class="col">Downloads</div>
+                            <div class="col text-end">{{ theme.downloads }}</div>
+                        </div>
+                        <div class="row p-2 justify-content-between">
+                            <div class="col">
+                                Is Dark
+                            </div>
+                            <div class="col">
+                                <div class="d-flex justify-content-end">
+                                    <div class="toggle">
+                                        <div class="toggle-switch {% if theme.is_dark %}active{% endif %}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div x-show="color">
+                    {% include 'themes/theme_colors.html'%}
+                </div>
+                <div class="row mt-2">
+                    <div class="col text-end">
+                        <form method="POST" action="{% url 'themes:download' id=theme.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Download Theme</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
