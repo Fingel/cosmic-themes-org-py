@@ -19,7 +19,7 @@
     </head>
     <body>
         {% include 'svg/color-mode.svg' %}
-        <div class="dropdown position-fixed top-0 end-0 mt-3 me-3 bd-mode-toggle">
+        <div class="dropdown position-absolute top-0 end-0 mt-3 me-3 bd-mode-toggle">
             <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
                     id="bd-theme"
                     type="button"
@@ -55,14 +55,33 @@
         </div>
         <div class="container p-4 py-md-5">
           <header class="d-flex align-items-center mb-3 border-bottom">
-              <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
+              <nav class="navbar">
+                <div class="container justify-content-start">
                     <a class="navbar-brand" href="/"><img src="{% static 'img/logo-small.webp' %}" />COSMIC™ Themes</a>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{% url 'themes:create' %}">Submit a theme</a>
-                        </li>
-                    </ul>
+                    <a class="nav-link me-3" href="{% url 'themes:create' %}">Submit a theme</a>
+                    {% url 'themes:list' as themes_list_url %}
+                    {% if request.path == themes_list_url %}
+                    <div class="nav-item">
+                        <form hx-get="{% url 'themes:list' %}"
+                            hx-target="#themes-list"
+                            hx-swap="innerHTML"
+                            hx-trigger="submit, keydown changed delay:300ms from:input, change from:select, search from:input"
+                        >
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control" type="search" id="search" placeholder="Search" name="search">
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" name="sort">
+                                        <option value="popular" selected>Popular</option>
+                                        <option value="new">New</option>
+                                        <option value="name">Name</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
                 </div>
               </nav>
           </header>
@@ -75,6 +94,7 @@
               Found a bug? Missing feature? View this site on <a href="https://github.com/Fingel/cosmic-themes-org-py/">Github</a>. Created by <a href="https://www.pedaldrivenprogramming.com">Austin Riba</a> &middot; &copy; 2024
           </footer>
         </div>
+        <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
         {% bootstrap_javascript %}
         {% block extra_javascript %}{% endblock %}
     </body>

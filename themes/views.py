@@ -34,8 +34,30 @@ class ThemeCreateView(SuccessMessageMixin, CreateView):
 
 
 class ThemeListView(ListView):
-    queryset = Theme.objects.filter(approved=True)
+    model = Theme
     ordering = ["-downloads"]
+
+    def get_queryset(self):
+        qs = super().get_queryset().filter(approved=True)
+
+        if search := self.request.GET.get("search", ""):
+            qs = qs.filter(name__icontains=search)
+
+        if sort := self.request.GET.get("sort", ""):
+            if sort == "popular":
+                qs = qs.order_by("-downloads")
+            elif sort == "new":
+                qs = qs.order_by("-created")
+            elif sort == "name":
+                qs = qs.order_by("name")
+
+        return qs
+
+    def get_template_names(self) -> list[str]:
+        if self.request.htmx:
+            return ["themes/theme_list_partial.html"]
+        else:
+            return super().get_template_names()
 
 
 class ThemeDownloadView(View):

@@ -12,6 +12,7 @@ dependencies = [
     "dj-database-url>=2.2.0",
     "gunicorn>=23.0.0",
     "psycopg>=3.2.1",
+    "django-htmx>=1.19.0",
 ]
 
 [build-system]
