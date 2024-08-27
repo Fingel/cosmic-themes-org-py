@@ -88,6 +88,10 @@
 
           <main>
               {% bootstrap_messages %}
+              <div class="alert alert-danger d-none" role="alert" id="dark-reader-warning">
+                  <strong>Dark Reader</strong> users: The themes on this site will not look correct with Dark Reader turned on!
+              </div>
+
               {% block content %}{% endblock %}
           </main>
           <footer class="pt-5 my-5 text-body-secondary border-top">
@@ -96,6 +100,14 @@
         </div>
         <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
         {% bootstrap_javascript %}
+        <script>
+        var isDarkReaderEnabled =
+          "querySelector" in document &&
+          !!document.querySelector("meta[name=darkreader]");
+
+        if (isDarkReaderEnabled)
+          document.querySelector("#dark-reader-warning").classList.remove("d-none");
+        </script>
         {% block extra_javascript %}{% endblock %}
     </body>
 </html>
