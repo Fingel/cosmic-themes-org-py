@@ -1,6 +1,8 @@
+body {
+    padding-bottom: 2em;
+}
 .container {
     max-width: 960px;
-    padding-bottom: 2em;
 }
 
 .text-end {
@@ -148,11 +150,9 @@ header {
 }
 
 .colors .col {
-    border: 1px solid var(--secondary-container-divider);
     height: 45px;
-    border-top: 0;
     width: 1.5em;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.2em;
 }
 
 .theme-preview .toggle {
