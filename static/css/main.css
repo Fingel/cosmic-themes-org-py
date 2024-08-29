@@ -149,10 +149,13 @@ header {
     background-color: var(--button-pressed);
 }
 
+.flex-grid {
+    display: flex;
+}
 .colors .col {
     height: 45px;
     width: 1.5em;
-    margin-bottom: 0.2em;
+    flex: 1;
 }
 
 .theme-preview .toggle {
