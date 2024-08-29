@@ -140,7 +140,12 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "_static"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    ("pico", BASE_DIR / "node_modules" / "@picocss" / "pico"),
+    ("htmx", BASE_DIR / "node_modules" / "htmx.org" / "dist"),
+    ("alpine", BASE_DIR / "node_modules" / "alpinejs" / "dist"),
+]
 
 TEMPLATES = [
     {

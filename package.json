@@ -1,0 +1,8 @@
+{
+  "name": "cosmic-themes-py",
+  "dependencies": {
+    "@picocss/pico": "^2.0.6",
+    "alpinejs": "^3.14.1",
+    "htmx.org": "^2.0.2"
+  }
+}
