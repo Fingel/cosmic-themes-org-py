@@ -43,10 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django_bootstrap5",
     "django_htmx",
-    "crispy_forms",
-    "crispy_bootstrap5",
     "accounts",
     "themes",
 ]
@@ -79,9 +76,6 @@ TEMPLATES = [
         },
     },
 ]
-
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 WSGI_APPLICATION = "cosmic_themes.wsgi.application"
 
@@ -142,7 +136,7 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "_static"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    ("pico", BASE_DIR / "node_modules" / "@picocss" / "pico"),
+    ("pico", BASE_DIR / "node_modules" / "@picocss" / "pico" / "css"),
     ("htmx", BASE_DIR / "node_modules" / "htmx.org" / "dist"),
     ("alpine", BASE_DIR / "node_modules" / "alpinejs" / "dist"),
 ]

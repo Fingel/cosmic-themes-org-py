@@ -6,9 +6,6 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "django>=5.1",
-    "django-crispy-forms>=2.3",
-    "crispy-bootstrap5>=2024.2",
-    "django-bootstrap5>=24.2",
     "dj-database-url>=2.2.0",
     "gunicorn>=23.0.0",
     "psycopg>=3.2.1",

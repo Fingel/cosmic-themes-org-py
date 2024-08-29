@@ -1,11 +1,12 @@
 {% for theme in object_list %}
+<section>
 <style>
 #theme-preview-{{ theme.id }} {
     {{ theme.css }}
 }
 </style>
-<div id="theme-preview-{{ theme.id }}" class="my-5">
-    <div id="{{theme.name}}" class="theme-preview pb-2" x-data="{color: false }">
+<div id="theme-preview-{{ theme.id }}">
+    <div id="{{theme.name}}" class="theme-preview" x-data="{color: false }">
         <div class="theme-preview-menu">
             <div class="menu-left"><a href="#{{ theme.name }}"><i class="bi bi-link-45deg"></i></a></div>
             <div class="menu-right">
@@ -25,33 +26,31 @@
             </div>
             <div class="theme-preview-content">
                 <h3>{{ theme.name }}</h3>
-                <div class="theme-preview-center mb-3" x-show="!color">
+                <div class="theme-preview-center" x-show="!color">
                     <div class="container">
                         {% if theme.author %}
-                        <div class="row p-2">
-                            <div class="col">Author</div>
-                            <div class="col text-end">{{ theme.author }}</div>
+                        <div class="theme-info grid">
+                            <div>Author</div>
+                            <div class="text-end">{{ theme.author }}</div>
                         </div>
                         {% endif %}
                         {% if theme.link %}
-                        <div class="row p-2">
-                            <div class="col">Homepage</div>
-                            <div class="col text-end"><a href="{{ theme.link }}">Visit</a></div>
+                        <div class="theme-info grid">
+                            <div>Homepage</div>
+                            <div class="text-end"><a href="{{ theme.link }}">Visit</a></div>
                         </div>
                         {% endif %}
-                        <div class="row p-2">
-                            <div class="col">Downloads</div>
-                            <div class="col text-end">{{ theme.downloads }}</div>
+                        <div class="grid">
+                            <div>Downloads</div>
+                            <div class="text-end">{{ theme.downloads }}</div>
                         </div>
-                        <div class="row p-2 justify-content-between">
-                            <div class="col">
+                        <div class="grid">
+                            <div>
                                 Is Dark
                             </div>
-                            <div class="col">
-                                <div class="d-flex justify-content-end">
-                                    <div class="toggle">
-                                        <div class="toggle-switch {% if theme.is_dark %}active{% endif %}"></div>
-                                    </div>
+                            <div class="d-flex justify-content-end">
+                                <div class="toggle">
+                                    <div class="toggle-switch {% if theme.is_dark %}active{% endif %}"></div>
                                 </div>
                             </div>
                         </div>
@@ -60,8 +59,9 @@
                 <div x-show="color">
                     {% include 'themes/theme_colors.html'%}
                 </div>
-                <div class="row mt-2">
-                    <div class="col text-end">
+                <div class="grid">
+                    <div></div>
+                    <div class="text-end">
                         <form method="POST" action="{% url 'themes:download' id=theme.id %}">
                             {% csrf_token %}
                             <button type="submit">Download Theme</button>
@@ -72,6 +72,7 @@
         </div>
     </div>
 </div>
+</section>
 {% empty %}
 <p>No themes match that search :(</p>
 {% endfor %}

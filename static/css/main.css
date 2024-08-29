@@ -1,43 +1,32 @@
 .container {
     max-width: 960px;
+    padding-bottom: 2em;
 }
+
+.text-end {
+    text-align: end;
+}
+
+.d-flex {
+    display: flex;
+}
+
+header {
+    margin-bottom: 1em;
+    border-bottom: 1px solid var(--pico-muted-border-color);
+}
+.justify-content-end {
+    justify-content: end;
+}
+
 .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 
 .navbar-brand img {
     height: 1.5em;
     margin: 0 0.5em;
-}
-
-.btn-bd-primary {
-    --bd-violet-bg: #73d0ff;
-    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-    --bs-btn-font-weight: 600;
-    --bs-btn-color: var(--bs-white);
-    --bs-btn-bg: var(--bd-violet-bg);
-    --bs-btn-border-color: var(--bd-violet-bg);
-    --bs-btn-hover-color: var(--bs-white);
-    --bs-btn-hover-bg: #73d0ff;
-    --bs-btn-hover-border-color: #73d0ff;
-    --bs-btn-focus-shadow-rgb: var(--bd-violet-bg);
-    --bs-btn-active-color: var(--bs-btn-hover-color);
-    --bs-btn-active-bg: #73d0ff;
-    --bs-btn-active-border-color: #73d0ff;
-}
-
-.button-bd-primary .bi {
-    color: var(--bs-white);
-}
-
-.bd-mode-toggle {
-    z-index: 1500;
-}
-
-.bd-mode-toggle .dropdown-menu .active .bi {
-    display: block !important;
-    color: white;
 }
 
 .theme-preview {
@@ -72,7 +61,7 @@
 }
 
 .theme-preview-sidebar {
-    width: 150px;
+    width: 7em;
     flex: none;
 }
 
@@ -96,6 +85,10 @@
     color: var(--on-primary-container-color);
 }
 
+.theme-preview-sidebar li {
+    color: var(--on-secondary-container-color);
+}
+
 .theme-preview ul {
     list-style-type: none;
     padding: 0;
@@ -105,6 +98,7 @@
     padding: 4px;
     cursor: pointer;
     border-radius: 2px;
+    list-style: none;
 }
 
 .theme-preview .active {
@@ -121,17 +115,23 @@
     padding: 0px 40px;
 }
 
+.theme-preview-content h3 {
+    color: var(--on-bg-color);
+}
+
 .theme-preview-center {
     background-color: var(--bg-component-color);
     color: var(--on-bg-component-color);
     padding: 4px;
     border-radius: var(--radius);
+    margin-bottom: 0.5em;
 }
 
-.theme-preview-center .row {
+.theme-preview-center .grid {
+    padding: 0.5em;
     border-bottom: 1px solid var(--secondary-container-divider);
 }
-.theme-preview-center .row:last-child {
+.theme-preview-center .grid:last-child {
     border-bottom: 0;
 }
 
@@ -151,6 +151,8 @@
     border: 1px solid var(--secondary-container-divider);
     height: 45px;
     border-top: 0;
+    width: 1.5em;
+    margin-bottom: 0.5em;
 }
 
 .theme-preview .toggle {
