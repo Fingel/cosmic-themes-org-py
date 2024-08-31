@@ -25,7 +25,11 @@ def notify_theme_created(theme: Theme):
 class ThemeCreateView(SuccessMessageMixin, CreateView):
     model = Theme
     form_class = ThemeForm
-    success_message = "Thanks for submitting a theme! It looks great :)"
+    success_message = (
+        "Thanks for submitting a theme! If you would like to edit or remove your "
+        'submission, please open an issue on <a href="https://github.com/Fingel/cosmic-themes-org-py/">'
+        "Github</a>."
+    )
 
     def get_success_url(self) -> str:
         if self.object:
