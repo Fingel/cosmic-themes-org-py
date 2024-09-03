@@ -4,7 +4,10 @@ body {
 .container {
     max-width: 960px;
 }
-
+.alert {
+    background-color: #d24317;
+    color: #ffffff;
+}
 .text-end {
     text-align: end;
 }
