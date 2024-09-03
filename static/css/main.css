@@ -72,7 +72,13 @@ header {
     overflow: auto;
 }
 
-/* THEME PREVIEW */
+.theme-info {
+    display: flex;
+    border-bottom: 1px solid var(--secondary-container-divider);
+    justify-content: space-between;
+    padding: 0.5em;
+}
+
 .theme-preview {
     background-color: var(--bg-color);
     border-color: var(--window-hint);
@@ -129,11 +135,7 @@ header {
     margin-bottom: 0.5em;
 }
 
-.theme-preview-center .grid {
-    padding: 0.5em;
-    border-bottom: 1px solid var(--secondary-container-divider);
-}
-.theme-preview-center .grid:last-child {
+.theme-preview-center .theme-info:last-child {
     border-bottom: 0;
 }
 
