@@ -19,39 +19,39 @@
     <body>
         <div class="container">
           <header>
-              <nav>
-                  <ul>
-                    <li>
-                        <a class="navbar-brand" href="/">
-                            <img src="{% static 'img/logo-small.webp' %}" />COSMIC™ Themes
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'themes:create' %}" class="contrast">Submit a theme</a>
-                    </li>
-                  </ul>
-                  <ul>
-                    <li>
-                        {% url 'themes:list' as themes_list_url %}
-                        {% if request.path == themes_list_url %}
-                            <form hx-get="{% url 'themes:list' %}"
-                                hx-target="#themes-list"
-                                hx-swap="innerHTML"
-                                hx-trigger="submit, keydown changed delay:300ms from:input, change from:select, search from:input"
-                            >
-                                <fieldset class="grid">
-                                    <input  type="search" id="search" placeholder="Search" name="search">
-                                    <select name="sort">
-                                        <option value="popular" selected>Popular</option>
-                                        <option value="new">New</option>
-                                        <option value="name">Name</option>
-                                    </select>
-                                </fieldset>
-                            </form>
-                        {% endif %}
-                    </li>
-                  </ul>
-              </nav>
+              <div class="grid">
+                <nav>
+                    <ul>
+                        <li>
+                            <a class="navbar-brand" href="/">
+                                <img src="{% static 'img/logo-small.webp' %}" />COSMIC™ Themes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'themes:create' %}" class="contrast">Submit a theme</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="nav-form">
+                    {% url 'themes:list' as themes_list_url %}
+                    {% if request.path == themes_list_url %}
+                        <form hx-get="{% url 'themes:list' %}"
+                            hx-target="#themes-list"
+                            hx-swap="innerHTML"
+                            hx-trigger="submit, keydown changed delay:300ms from:input, change from:select, search from:input"
+                        >
+                            <fieldset class="grid">
+                                <input  type="search" id="search" placeholder="Search" name="search">
+                                <select name="sort">
+                                    <option value="popular" selected>Popular</option>
+                                    <option value="new">New</option>
+                                    <option value="name">Name</option>
+                                </select>
+                            </fieldset>
+                        </form>
+                    {% endif %}
+                </div>
+              </div>
           </header>
           <main>
               {% for message in messages %}

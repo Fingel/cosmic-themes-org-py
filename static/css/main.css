@@ -17,6 +17,10 @@ header {
     margin-bottom: 1em;
     border-bottom: 1px solid var(--pico-muted-border-color);
 }
+
+header .nav-form {
+    margin-top: 1em;
+}
 .justify-content-end {
     justify-content: end;
 }
