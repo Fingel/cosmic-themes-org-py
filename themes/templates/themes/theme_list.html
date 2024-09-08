@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 <div id="themes-list">
-{% include 'themes/theme_list_partial.html' with object_list=object_list %}
+{% include 'themes/theme_list_partial.html' with object_list=object_list page_obj=page_obj %}
 </div>
 {% endblock %}

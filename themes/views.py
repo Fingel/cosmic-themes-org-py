@@ -1,15 +1,17 @@
+from django.conf import settings
+from django.contrib.messages.views import SuccessMessageMixin
+from django.core.mail import send_mail
+from django.db.models import F
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from django.urls.base import reverse_lazy
+from django.views.generic import View
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
-from django.views.generic import View
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponse
-from django.db.models import F
-from django.contrib.messages.views import SuccessMessageMixin
-from django.conf import settings
-from django.core.mail import send_mail
 
 from themes.models import Theme
+
 from .forms import ThemeForm
 
 
@@ -40,6 +42,7 @@ class ThemeCreateView(SuccessMessageMixin, CreateView):
 class ThemeListView(ListView):
     model = Theme
     ordering = ["-downloads"]
+    paginate_by = 20
 
     def get_queryset(self):
         qs = super().get_queryset().filter(approved=True)
@@ -62,6 +65,13 @@ class ThemeListView(ListView):
             return ["themes/theme_list_partial.html"]
         else:
             return super().get_template_names()
+
+
+class ThemeDetailView(DetailView):
+    model = Theme
+
+    def get_queryset(self):
+        return super().get_queryset().filter(approved=True)
 
 
 class ThemeDownloadView(View):
