@@ -18,6 +18,3 @@ venv = ".venv"
 
 [tool.uv]
 dev-dependencies = ["django-stubs>=5.0.4"]
-
-[tool.setuptools]
-py-modules = []
