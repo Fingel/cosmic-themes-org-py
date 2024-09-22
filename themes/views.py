@@ -12,6 +12,7 @@ from django.views.generic.list import ListView
 
 from themes.models import Theme
 
+from .filters import themes_name, themes_order
 from .forms import ThemeForm
 
 
@@ -47,16 +48,11 @@ class ThemeListView(ListView):
     def get_queryset(self):
         qs = super().get_queryset().filter(approved=True)
 
-        if search := self.request.GET.get("search", ""):
-            qs = qs.filter(name__icontains=search)
+        if query := self.request.GET.get("search", ""):
+            qs = themes_name(qs, query)
 
         if sort := self.request.GET.get("sort", ""):
-            if sort == "popular":
-                qs = qs.order_by("-downloads")
-            elif sort == "new":
-                qs = qs.order_by("-created")
-            elif sort == "name":
-                qs = qs.order_by("name")
+            qs = themes_order(qs, sort)
 
         return qs
 

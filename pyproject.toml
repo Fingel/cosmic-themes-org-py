@@ -10,6 +10,7 @@ dependencies = [
     "gunicorn>=23.0.0",
     "psycopg>=3.2.1",
     "django-htmx>=1.19.0",
+    "django-ninja>=1.3.0",
 ]
 
 [tool.pyright]
