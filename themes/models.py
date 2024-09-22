@@ -1,7 +1,8 @@
-from django.db import models
-from django.urls import reverse
 import logging
 import re
+
+from django.db import models
+from django.urls import reverse
 
 logger = logging.getLogger(__name__)
 
@@ -14,6 +15,9 @@ class Theme(models.Model):
     link = models.URLField(blank=True, default="")
     downloads = models.PositiveIntegerField(blank=True, default=0, editable=False)
     approved = models.BooleanField(default=True)
+    red = models.IntegerField(default=0)
+    green = models.IntegerField(default=0)
+    blue = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -23,6 +27,13 @@ class Theme(models.Model):
         if match := re.search(regex, self.css):
             return bool(int(match.group(1)))
         return False
+
+    @property
+    def accent_color(self) -> tuple[int, int, int]:
+        regex = r"--accent-color: rgba\((\d+), (\d+), (\d+)"
+        if match := re.search(regex, self.css):
+            return (int(match.group(1)), int(match.group(2)), int(match.group(3)))
+        return (0, 0, 0)
 
     @property
     def popularity(self):

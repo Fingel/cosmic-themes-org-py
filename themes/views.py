@@ -12,7 +12,7 @@ from django.views.generic.list import ListView
 
 from themes.models import Theme
 
-from .filters import themes_name, themes_order
+from .filters import color_distance, themes_name, themes_order
 from .forms import ThemeForm
 
 
@@ -53,6 +53,10 @@ class ThemeListView(ListView):
 
         if sort := self.request.GET.get("sort", ""):
             qs = themes_order(qs, sort)
+
+        if color := self.request.GET.get("color", ""):
+            r, g, b = color.split(",")
+            qs = color_distance(qs, (int(r), int(g), int(b)))
 
         return qs
 
