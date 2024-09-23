@@ -34,10 +34,8 @@ class Theme(models.Model):
 
     @staticmethod
     def accent_color(css: str) -> tuple[int, int, int]:
-        print(css)
         regex = r"--accent-color: rgba\((\d+), (\d+), (\d+)"
         if match := re.search(regex, css):
-            print("found match")
             return (int(match.group(1)), int(match.group(2)), int(match.group(3)))
         return (0, 0, 0)
 
