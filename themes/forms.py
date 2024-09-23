@@ -52,6 +52,7 @@ class ThemeForm(forms.ModelForm):
         theme = super().save(commit=False)
         theme.css = self.css
         theme.ron = self.ron_text
+        theme.red, theme.green, theme.blue = theme.accent_color(self.css)
         theme.save()
         return theme
 

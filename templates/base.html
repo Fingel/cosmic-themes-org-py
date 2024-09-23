@@ -27,38 +27,15 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{% url 'themes:create' %}" class="contrast">Submit a theme</a>
+                            <a href="{% url 'themes:create' %}">Submit a theme</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Fingel/cosmic-themes-org-py/">
+                                {% include 'svg/github.svg' %}
+                            </a>
                         </li>
                     </ul>
                 </nav>
-                <div class="nav-form">
-                    {% url 'themes:list' as themes_list_url %}
-                    {% if request.path == themes_list_url %}
-                        <form hx-get="{% url 'themes:list' %}"
-                            hx-target="#themes-list"
-                            hx-swap="innerHTML"
-                            hx-push-url="true"
-                            hx-trigger="submit, keydown changed delay:300ms from:input, change from:select, search from:input"
-                        >
-                            <fieldset class="grid">
-                                <input  type="search" id="search" placeholder="Search" name="search"
-                                        value="{{ request.GET.search }}"
-                                >
-                                <select name="sort">
-                                    <option value="popular"
-                                            {% if request.GET.sort == 'popular' %}selected{% endif %}
-                                    >Popular</option>
-                                    <option value="new"
-                                        {% if request.GET.sort == 'new' %}selected{% endif %}
-                                    >New</option>
-                                    <option value="name"
-                                        {% if request.GET.sort == 'name' %}selected{% endif %}
-                                    >Name</option>
-                                </select>
-                            </fieldset>
-                        </form>
-                    {% endif %}
-                </div>
               </div>
           </header>
           <main>

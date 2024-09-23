@@ -25,3 +25,8 @@ def color_distance(qs: QuerySet[Theme], color: tuple[int, int, int]) -> QuerySet
         )
     )
     return qs.order_by("color_distance")
+
+
+def hex_to_rgb(h: str) -> tuple[int, int, int]:
+    c = h.lstrip("#")
+    return (int(c[0:2], 16), int(c[2:4], 16), int(c[4:6], 16))

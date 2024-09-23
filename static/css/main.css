@@ -1,5 +1,6 @@
 body {
     padding-bottom: 2em;
+    padding: 5px;
 }
 .container {
     max-width: 960px;
@@ -193,3 +194,23 @@ header .nav-form {
 .theme-preview .toggle-switch:not(.active) {
     left: 1px;
 }
+
+.filter-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filter-form .search {
+    flex-basis: 50%;
+}
+
+.filter-form .sort {
+    flex-basis: 30%;
+}
+
+.filter-form .color {
+    flex-basis: 20%;
+}
+
