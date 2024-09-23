@@ -22,10 +22,22 @@
                 {% if request.GET.sort == 'name' %}selected{% endif %}
             >Name</option>
         </select>
-        <input type="color" id="color" class="color" name="color" value="{{ request.GET.color }}">
+        <div class="color" role="group">
+            <input type="color" id="color" name="color" value="{{ request.GET.color }}">
+            <button class="outline">X</button>
+        </div>
     </fieldset>
 </form>
 <div id="themes-list">
 {% include 'themes/theme_list_partial.html' with object_list=object_list page_obj=page_obj %}
 </div>
+{% endblock %}
+{% block extra_javascript %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.color button').addEventListener('click', function() {
+            document.querySelector('.color input').value = '#000000';
+        });
+    });
+</script>
 {% endblock %}

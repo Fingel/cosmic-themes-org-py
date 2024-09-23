@@ -202,6 +202,13 @@ header .nav-form {
     gap: 1rem;
 }
 
+@media (max-width: 576px) {
+    .filter-form {
+        flex-direction: column;
+    }
+}
+
+
 .filter-form .search {
     flex-basis: 50%;
 }
@@ -213,4 +220,3 @@ header .nav-form {
 .filter-form .color {
     flex-basis: 20%;
 }
-
