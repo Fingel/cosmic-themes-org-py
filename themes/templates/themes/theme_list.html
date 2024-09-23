@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <form hx-get="{% url 'themes:list' %}"
-                        hx-target="#themes-list"
-                        hx-swap="innerHTML"
-                        hx-push-url="true"
-                        hx-trigger="submit, keydown changed delay:300ms from:input, change from:select, search input from:input, input delay:300ms from:input"
-                    >
+        hx-target="#themes-list"
+        hx-swap="innerHTML"
+        hx-push-url="true"
+        hx-debug="true"
+        hx-trigger="submit, keydown changed delay:300ms from:input, change from:select, search from:input, change from:input"
+    >
     <fieldset class="filter-form">
         <input  type="search" id="search" placeholder="Search" name="search" class="search"
                 value="{{ request.GET.search }}"

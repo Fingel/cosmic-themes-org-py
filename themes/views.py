@@ -60,7 +60,8 @@ class ThemeListView(ListView):
             except ValueError:
                 pass
             else:
-                qs = color_distance(qs, (r, g, b))
+                if not all(c == 0 for c in (r, g, b)):
+                    qs = color_distance(qs, (r, g, b))
 
         return qs
 
