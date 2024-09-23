@@ -5,7 +5,7 @@
         hx-swap="innerHTML"
         hx-push-url="true"
         hx-debug="true"
-        hx-trigger="submit, keydown changed delay:300ms from:input, change from:select, search from:input, change from:input"
+        hx-trigger="search, submit, keydown changed delay:300ms from:.search, change from:.sort, change, input delay:300ms from:.color-input"
     >
     <fieldset class="filter-form">
         <input  type="search" id="search" placeholder="Search" name="search" class="search"
@@ -23,7 +23,7 @@
             >Name</option>
         </select>
         <div class="color" role="group">
-            <input type="color" id="color" name="color" value="{{ request.GET.color }}">
+            <input type="color" id="color" name="color" class="color-input" value="{{ request.GET.color }}">
             <button class="outline">X</button>
         </div>
     </fieldset>
