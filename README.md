@@ -12,7 +12,7 @@ This is a very vanilla Django project. I recommend using [uv](https://astral.sh/
 build and run:
 
 ```sh
-    uv run manage.py migrate && uv run manage.py runserver
+    npm install && uv run manage.py migrate && uv run manage.py runserver
 ```
 
 should be enough to get the site up and running locally. Pull requests welcome!
