@@ -4,8 +4,8 @@ WORKDIR /app/
 COPY package.json package-lock.json /app/
 RUN npm install
 
-FROM python:3.12
-COPY --from=ghcr.io/astral-sh/uv:0.6.6 /uv /bin/uv
+FROM python:3.14
+COPY --from=ghcr.io/astral-sh/uv:0.10.2 /uv /bin/uv
 
 WORKDIR /app/
 COPY --from=node_deps /app/node_modules/ /app/node_modules/
