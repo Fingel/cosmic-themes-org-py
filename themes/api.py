@@ -11,7 +11,7 @@ router = Router()
 class ThemeSchema(ModelSchema):
     class Meta:
         model = Theme
-        fields = ["name", "ron", "author", "link", "downloads", "created", "updated"]
+        fields = ["id", "name", "ron", "author", "link", "downloads", "created", "updated"]
 
 
 @router.get("/", response=list[ThemeSchema])
