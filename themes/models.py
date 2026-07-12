@@ -1,5 +1,6 @@
 import logging
 import re
+import uuid
 
 from django.db import models
 from django.urls import reverse
@@ -20,6 +21,7 @@ class Theme(models.Model):
     blue = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True, blank=True)
 
     @property
     def is_dark(self) -> bool:
